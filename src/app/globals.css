@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso-950: #17110D;
+  --color-espresso-900: #221812;
+  --color-espresso-800: #2A1B12;
+  --color-espresso-700: #382418;
+  --color-cream-50: #FAF6F0;
+  --color-cream-100: #F4EBDD;
+  --color-cream-200: #EADBC8;
+  --color-beige-300: #D8C2A4;
+  --color-beige-400: #C2A782;
+  --color-gold-500: #B98A55;
+  --color-gold-400: #C99B65;
+  --color-sage-600: #4E5E48;
+  --color-sage-700: #3B4736;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-script: var(--font-playfair), cursive;
+}
+
+:root {
+  --bg-primary: #17110D;
+  --bg-secondary: #2A1B12;
+  --text-cream: #F4EBDD;
+  --text-beige: #D8C2A4;
+  --accent-gold: #B98A55;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #17110D;
+  color: #F4EBDD;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  selection-background-color: #B98A55;
+  selection-color: #17110D;
+}
+
+::selection {
+  background-color: #B98A55;
+  color: #17110D;
+}
+
+/* Custom editorial scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #17110D;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A1B12;
+  border-radius: 4px;
+  border: 1px solid #B98A55/30;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B98A55;
+}
+
+/* Luxury backlighting and glow utility */
+.glow-shell {
+  filter: drop-shadow(0 0 25px rgba(217, 155, 85, 0.45));
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F4EBDD 0%, #D8C2A4 50%, #B98A55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-glass {
+  background: rgba(23, 17, 13, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(216, 194, 164, 0.12);
+}
+
+.bg-glass-card {
+  background: rgba(42, 27, 18, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 194, 164, 0.15);
+}
+
+/* Subtle architectural grain */
+.bg-grain {
+  background-image: radial-gradient(rgba(216, 194, 164, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
