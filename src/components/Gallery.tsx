@@ -60,22 +60,22 @@ export default function Gallery() {
   ];
 
   return (
-    <section className="relative py-28 md:py-40 bg-[#17110D] border-t border-[#D8C2A4]/10 overflow-hidden">
+    <section className="relative py-28 md:py-40 bg-[#FAF6F0] border-t border-[#E4C8BA]/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
             <InstagramIcon className="w-3.5 h-3.5 text-[#B98A55]" />
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#B98A55]">
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#B98A55]">
               FROM BERU
             </span>
           </div>
 
-          <h2 className="font-serif text-4xl sm:text-6xl text-[#F4EBDD] font-normal tracking-tight mb-3">
+          <h2 className="font-serif text-4xl sm:text-6xl text-[#2A1B12] font-normal tracking-tight mb-3">
             {BERU_INFO.instagram}
           </h2>
 
-          <p className="text-xs sm:text-sm text-[#D8C2A4]/70 uppercase tracking-[0.2em]">
+          <p className="text-xs sm:text-sm text-[#6A5546] uppercase tracking-[0.2em] font-medium">
             Moments, Flavors & Colombo Café Culture
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: idx * 0.08, duration: 0.7 }}
-              className={`group relative rounded-2xl overflow-hidden bg-[#2A1B12] border border-[#D8C2A4]/15 ${item.colSpan}`}
+              className={`group relative rounded-2xl overflow-hidden bg-white border border-[#E4C8BA]/80 shadow-[0_8px_30px_rgba(56,36,24,0.06)] ${item.colSpan}`}
             >
               <div className={`relative w-full ${item.aspect} overflow-hidden`}>
                 {"video" in item && item.video ? (
@@ -114,20 +114,20 @@ export default function Gallery() {
                   />
                 )}
 
-                {/* Dark Hover Overlay */}
-                <div className="absolute inset-0 bg-[#17110D]/75 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-between p-6 backdrop-blur-[2px]">
-                  <div className="self-end p-2.5 rounded-full bg-[#B98A55] text-[#17110D]">
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-[#2A1B12]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-between p-6 backdrop-blur-[2px]">
+                  <div className="self-end p-2.5 rounded-full bg-[#B98A55] text-white">
                     <InstagramIcon className="w-4 h-4" />
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B98A55] font-semibold block mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#E4C8BA] font-semibold block mb-1">
                       {item.subtitle}
                     </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-[#F4EBDD] font-normal">
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#FAF6F0] font-normal">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-[#D8C2A4]/80 flex items-center gap-1.5 mt-2">
+                    <p className="text-xs text-[#FAF6F0]/90 flex items-center gap-1.5 mt-2">
                       <span>View on Instagram</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </p>
@@ -144,9 +144,9 @@ export default function Gallery() {
             href={BERU_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-[#B98A55] bg-[#2A1B12]/50 hover:bg-[#B98A55] text-[#F4EBDD] hover:text-[#17110D] font-medium text-xs uppercase tracking-[0.22em] transition-all duration-300 shadow-xl"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-[#E4C8BA] bg-white hover:bg-[#382418] text-[#382418] hover:text-[#FAF6F0] font-semibold text-xs uppercase tracking-[0.22em] transition-all duration-300 shadow-md"
           >
-            <InstagramIcon className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4 text-[#B98A55]" />
             <span>FOLLOW US ON INSTAGRAM</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>

@@ -39,33 +39,33 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "py-3 bg-[#17110D]/85 backdrop-blur-md border-b border-[#D8C2A4]/15 shadow-2xl"
-            : "py-5 bg-gradient-to-b from-[#17110D]/80 to-transparent"
+            ? "py-1.5 bg-[#E4C8BA]/95 backdrop-blur-md border-b border-[#382418]/15 shadow-md"
+            : "py-2 bg-[#E4C8BA] border-b border-[#382418]/10 shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Logo size="md" withGlow={scrolled} />
+        <div className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
+          {/* Brand Logo with user's horizontal layout */}
+          <Logo variant="header" size="md" />
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300 py-1 ${
-                    isActive ? "text-[#F4EBDD]" : "text-[#D8C2A4]/75 hover:text-[#F4EBDD]"
+                  className={`relative text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-300 py-1 ${
+                    isActive ? "text-[#17110D] font-semibold" : "text-[#382418]/80 hover:text-[#17110D]"
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#B98A55]"
+                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#382418] rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -75,22 +75,23 @@ export default function Navbar() {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2.5">
             <Link
               href="/#book-table"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#B98A55]/60 bg-[#2A1B12]/60 hover:bg-[#B98A55] text-[#F4EBDD] hover:text-[#17110D] transition-all duration-300 text-xs uppercase tracking-[0.18em] font-medium shadow-sm hover:shadow-[0_0_20px_rgba(185,138,85,0.4)]"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.16em] font-medium shadow-sm hover:shadow-[0_4px_14px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
             >
               <span>Book a Table</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-3 h-3" />
             </Link>
 
             {/* Hamburger for mobile & quick menu */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              className="p-2.5 rounded-full border border-[#D8C2A4]/20 hover:border-[#B98A55] text-[#F4EBDD] bg-[#2A1B12]/40 transition-colors focus:outline-none"
+              suppressHydrationWarning
+              className="p-1.5 sm:p-2 rounded-full border border-[#382418]/25 hover:border-[#382418] text-[#382418] hover:text-[#17110D] bg-white/40 hover:bg-white/70 transition-colors focus:outline-none"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
@@ -104,17 +105,18 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 95% 5%)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 bg-[#17110D] flex flex-col justify-between p-8 sm:p-14 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#E4C8BA] flex flex-col justify-between p-6 sm:p-12 overflow-y-auto"
           >
             {/* Header bar */}
             <div className="flex items-center justify-between">
-              <Logo size="md" />
+              <Logo variant="header" size="md" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close navigation menu"
-                className="p-3 rounded-full border border-[#D8C2A4]/20 hover:border-[#B98A55] text-[#F4EBDD] transition-colors"
+                suppressHydrationWarning
+                className="p-2 sm:p-2.5 rounded-full border border-[#382418]/25 hover:border-[#382418] text-[#382418] hover:text-[#17110D] bg-white/40 hover:bg-white/70 transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -134,7 +136,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className={`font-serif text-3xl sm:text-4xl italic transition-colors block ${
-                          isActive ? "text-[#B98A55]" : "text-[#F4EBDD] hover:text-[#D8C2A4]"
+                          isActive ? "text-[#17110D] font-bold" : "text-[#382418]/80 hover:text-[#17110D]"
                         }`}
                       >
                         {link.name}
@@ -148,12 +150,12 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="mt-10 pt-8 border-t border-[#D8C2A4]/15"
+                className="mt-10 pt-8 border-t border-[#382418]/15"
               >
                 <Link
                   href="/#book-table"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#B98A55] text-[#17110D] font-medium tracking-[0.18em] text-xs uppercase hover:bg-[#F4EBDD] transition-colors shadow-lg shadow-black/40"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] font-medium tracking-[0.18em] text-xs uppercase transition-all shadow-[0_4px_20px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
                 >
                   <span>Request a Table</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -162,22 +164,22 @@ export default function Navbar() {
             </div>
 
             {/* Footer details in mobile menu */}
-            <div className="pt-6 border-t border-[#D8C2A4]/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#D8C2A4]/70 max-w-3xl mx-auto w-full text-center sm:text-left">
+            <div className="pt-6 border-t border-[#382418]/15 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#382418]/85 max-w-3xl mx-auto w-full text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2">
-                <MapPin className="w-4 h-4 text-[#B98A55]" />
+                <MapPin className="w-4 h-4 text-[#382418]" />
                 <span>{BERU_INFO.address}</span>
               </div>
               <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Clock className="w-4 h-4 text-[#B98A55]" />
+                <Clock className="w-4 h-4 text-[#382418]" />
                 <span>{BERU_INFO.hours} • Open 7 Days</span>
               </div>
               <div className="flex items-center justify-center sm:justify-end gap-2">
-                <InstagramIcon className="w-4 h-4 text-[#B98A55]" />
+                <InstagramIcon className="w-4 h-4 text-[#382418]" />
                 <a
                   href={BERU_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#F4EBDD] underline underline-offset-4"
+                  className="hover:text-[#17110D] underline underline-offset-4"
                 >
                   {BERU_INFO.instagram}
                 </a>

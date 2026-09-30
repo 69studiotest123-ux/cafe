@@ -120,14 +120,14 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
+    <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#17110D] text-[#F4EBDD] font-sans antialiased selection:bg-[#B98A55] selection:text-[#17110D]">
+      <body className="min-h-screen bg-[#17110D] text-[#F4EBDD] font-sans antialiased selection:bg-[#B98A55] selection:text-[#17110D]" suppressHydrationWarning>
         <PageLoader />
         <Navbar />
         <main>{children}</main>

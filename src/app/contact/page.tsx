@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-24 bg-[#17110D]">
+    <div className="pt-24 bg-[#FAF7F2]">
       <VisitSection />
       <Booking />
     </div>

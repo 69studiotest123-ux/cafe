@@ -7,7 +7,7 @@ interface LogoProps {
   withGlow?: boolean;
   size?: "sm" | "md" | "lg" | "xl";
   lightMode?: boolean;
-  variant?: "badge" | "symbol" | "transparent" | "official";
+  variant?: "badge" | "symbol" | "transparent" | "official" | "header";
 }
 
 export default function Logo({
@@ -17,6 +17,34 @@ export default function Logo({
   lightMode = false,
   variant = "badge",
 }: LogoProps) {
+  // Horizontal logo variant for header matching user's requested layout
+  if (variant === "header") {
+    const headerHeightMap = {
+      sm: { h: 24, w: 59 },
+      md: { h: 30, w: 74 },
+      lg: { h: 36, w: 89 },
+      xl: { h: 46, w: 114 },
+    };
+    const dimensions = headerHeightMap[size] || headerHeightMap.md;
+
+    return (
+      <Link
+        href="/"
+        className={`group inline-flex items-center select-none transition-transform duration-300 hover:scale-[1.03] ${className}`}
+      >
+        <Image
+          src="/images/beru-header-logo.png"
+          alt="Beru Café Colombo"
+          width={dimensions.w}
+          height={dimensions.h}
+          className="object-contain w-auto transition-transform duration-300 group-hover:scale-[1.02]"
+          style={{ height: `${dimensions.h}px` }}
+          priority
+        />
+      </Link>
+    );
+  }
+
   const sizeMap = {
     sm: { img: "w-8 h-8", text: "text-lg", sub: "text-[9px] tracking-[0.25em]" },
     md: { img: "w-10 h-10", text: "text-2xl", sub: "text-[10px] tracking-[0.3em]" },

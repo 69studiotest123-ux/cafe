@@ -86,28 +86,28 @@ export default function GalleryPage() {
   ];
 
   return (
-    <div className="pt-32 pb-28 bg-[#17110D] min-h-screen">
+    <div className="pt-32 pb-28 bg-[#FAF7F2] min-h-screen">
       {/* Header */}
       <section className="px-6 md:px-12 max-w-5xl mx-auto mb-16 text-center">
         <div className="inline-flex items-center gap-2 mb-3">
           <InstagramIcon className="w-3.5 h-3.5 text-[#B98A55]" />
-          <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#B98A55]">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#B98A55]">
             VISUAL JOURNAL
           </span>
           <InstagramIcon className="w-3.5 h-3.5 text-[#B98A55]" />
         </div>
 
-        <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl text-[#F4EBDD] font-normal tracking-tight mb-6">
+        <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl text-[#2A1B12] font-normal tracking-tight mb-6">
           Life at Beru
         </h1>
 
-        <p className="max-w-2xl mx-auto text-sm sm:text-base text-[#D8C2A4]/80 font-light leading-relaxed">
+        <p className="max-w-2xl mx-auto text-sm sm:text-base text-[#6A5546] font-normal leading-relaxed">
           Glimpses of daily rituals, quiet corners, and culinary creations. Follow our journey on Instagram at{" "}
           <a
             href={BERU_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#B98A55] hover:text-[#F4EBDD] underline underline-offset-4 font-medium"
+            className="text-[#B98A55] hover:text-[#2A1B12] underline underline-offset-4 font-semibold"
           >
             {BERU_INFO.instagram}
           </a>
@@ -126,7 +126,7 @@ export default function GalleryPage() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.06, duration: 0.6 }}
               onClick={() => setSelectedImage(item)}
-              className="group relative rounded-2xl overflow-hidden bg-[#2A1B12] border border-[#D8C2A4]/15 hover:border-[#B98A55]/60 transition-all duration-500 cursor-pointer shadow-xl"
+              className="group relative rounded-2xl overflow-hidden bg-white border border-[#E4C8BA]/80 hover:border-[#B98A55] transition-all duration-500 cursor-pointer shadow-[0_8px_30px_rgba(56,36,24,0.06)] hover:shadow-xl"
             >
               <div className={`relative w-full ${item.aspect} overflow-hidden`}>
                 {"video" in item && item.video ? (
@@ -148,20 +148,20 @@ export default function GalleryPage() {
                   />
                 )}
 
-                {/* Dark Hover Reveal */}
-                <div className="absolute inset-0 bg-[#17110D]/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-between backdrop-blur-[2px]">
-                  <div className="self-end p-2.5 rounded-full bg-[#B98A55] text-[#17110D]">
+                {/* Hover Reveal */}
+                <div className="absolute inset-0 bg-[#2A1B12]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-between backdrop-blur-[2px]">
+                  <div className="self-end p-2.5 rounded-full bg-[#B98A55] text-white">
                     <Eye className="w-4 h-4" />
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B98A55] font-semibold block mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#E4C8BA] font-semibold block mb-1">
                       {item.category}
                     </span>
-                    <h3 className="font-serif text-2xl text-[#F4EBDD] mb-1">
+                    <h3 className="font-serif text-2xl text-[#FAF6F0] mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-[#D8C2A4]/80 font-light">
+                    <p className="text-xs text-[#FAF6F0]/80 font-light">
                       {item.desc}
                     </p>
                   </div>
@@ -177,9 +177,9 @@ export default function GalleryPage() {
             href={BERU_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#B98A55] hover:bg-[#F4EBDD] text-[#17110D] font-medium text-xs uppercase tracking-[0.22em] transition-all shadow-xl"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#382418] hover:bg-[#B98A55] text-[#FAF6F0] font-semibold text-xs uppercase tracking-[0.22em] transition-all shadow-xl"
           >
-            <InstagramIcon className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4 text-[#B98A55]" />
             <span>SEE MORE ON INSTAGRAM</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>

@@ -12,7 +12,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#17110D] border-t border-[#D8C2A4]/15 text-[#D8C2A4] pt-20 pb-12 overflow-hidden">
+    <footer className="relative bg-[#17110D] border-t border-[#D8C2A4]/12 text-[#D8C2A4] pt-20 pb-12 overflow-hidden">
+      {/* Ambient glows */}
+      <div className="ambient-orb w-[500px] h-[400px] bg-[#B98A55]/7 top-0 left-[-100px] animate-orb" />
+      <div className="ambient-orb w-[400px] h-[300px] bg-[#2A1B12]/60 bottom-0 right-[-80px] animate-orb-reverse" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-[#D8C2A4]/10">
@@ -124,7 +128,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-[11px] text-[#D8C2A4]/60">
           <p>© 2026 Beru Café. All rights reserved.</p>
 
-          <p className="font-serif italic text-sm tracking-wider text-[#D8C2A4]/80">
+          <p className="text-shimmer font-serif italic text-sm tracking-wider">
             GOOD FOOD • GREAT VIBES
           </p>
 
@@ -132,10 +136,11 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             aria-label="Scroll back to top"
+            suppressHydrationWarning
             className="group inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#D8C2A4] hover:text-[#B98A55] transition-colors p-2"
           >
             <span>Back to top</span>
-            <div className="p-1.5 rounded-full border border-[#D8C2A4]/20 group-hover:border-[#B98A55] group-hover:-translate-y-0.5 transition-all">
+            <div className="p-1.5 rounded-full border border-[#D8C2A4]/20 group-hover:border-[#B98A55] group-hover:-translate-y-1 group-hover:glow-gold-sm transition-all duration-300">
               <ArrowUp className="w-3 h-3" />
             </div>
           </button>

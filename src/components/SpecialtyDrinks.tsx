@@ -35,28 +35,28 @@ export default function SpecialtyDrinks() {
   ];
 
   return (
-    <section className="relative py-28 md:py-40 bg-[#17110D] overflow-hidden">
+    <section className="relative py-28 md:py-40 bg-[#FAF7F2] overflow-hidden">
       {/* Subtle Background Glow */}
-      <div className="absolute top-1/4 -left-40 w-96 h-96 rounded-full bg-[#4E5E48]/20 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 rounded-full bg-[#B98A55]/15 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-40 w-96 h-96 rounded-full bg-[#E4C8BA]/20 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-96 h-96 rounded-full bg-[#B98A55]/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Editorial Heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#B98A55]" />
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#B98A55]">
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#B98A55]">
               SPECIALTY DRINKS
             </span>
             <Sparkles className="w-3.5 h-3.5 text-[#B98A55]" />
           </div>
 
-          <h2 className="font-serif text-4xl sm:text-6xl text-[#F4EBDD] font-normal tracking-tight mb-4">
+          <h2 className="font-serif text-4xl sm:text-6xl text-[#2A1B12] font-normal tracking-tight mb-4">
             “Beautifully crafted. <br />
-            <span className="italic text-[#D8C2A4]">Refreshingly different.”</span>
+            <span className="italic text-[#B98A55]">Refreshingly different.”</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#D8C2A4]/75 font-light leading-relaxed">
+          <p className="text-sm sm:text-base text-[#6A5546] font-normal leading-relaxed">
             From ceremonial Japanese matcha to delicate cold-pressed elixirs and artisan pour-overs, every beverage at Beru is prepared with mindfulness and artistic precision.
           </p>
         </div>
@@ -72,10 +72,10 @@ export default function SpecialtyDrinks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: idx * 0.15, duration: 0.8 }}
-                className="group relative rounded-3xl overflow-hidden bg-glass-card border border-[#D8C2A4]/15 hover:border-[#B98A55]/60 transition-all duration-500 flex flex-col justify-between"
+                className="group relative rounded-3xl overflow-hidden bg-white border border-[#E4C8BA]/80 hover:border-[#B98A55] shadow-[0_8px_30px_rgba(56,36,24,0.06)] hover:shadow-xl transition-all duration-500 flex flex-col justify-between"
               >
                 {/* Image or Video */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#2A1B12]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FAF6F0]">
                   {"video" in item && item.video ? (
                     <video
                       src={item.video}
@@ -94,11 +94,11 @@ export default function SpecialtyDrinks() {
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#17110D] via-[#17110D]/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
                   {/* Top Tag */}
                   <div className="absolute top-5 left-5">
-                    <span className="px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-medium bg-[#17110D]/85 backdrop-blur-md text-[#F4EBDD] border border-[#D8C2A4]/20 flex items-center gap-1.5">
+                    <span className="px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-semibold bg-white/95 backdrop-blur-md text-[#2A1B12] border border-[#E4C8BA] shadow-sm flex items-center gap-1.5">
                       <Icon className="w-3 h-3 text-[#B98A55]" />
                       {item.tag}
                     </span>
@@ -106,22 +106,22 @@ export default function SpecialtyDrinks() {
                 </div>
 
                 {/* Content */}
-                <div className="p-7 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#17110D] to-[#221812]">
+                <div className="p-7 flex flex-col flex-grow justify-between bg-white">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.25em] text-[#B98A55] font-semibold block mb-1.5">
                       {item.category}
                     </span>
-                    <h3 className="font-serif text-2xl text-[#F4EBDD] font-normal group-hover:text-[#B98A55] transition-colors mb-3">
+                    <h3 className="font-serif text-2xl text-[#2A1B12] font-medium group-hover:text-[#B98A55] transition-colors mb-3">
                       {item.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#D8C2A4]/75 font-light leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-[#6A5546] font-normal leading-relaxed mb-6">
                       {item.desc}
                     </p>
                   </div>
 
                   <Link
                     href="/menu#matcha"
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium text-[#D8C2A4] group-hover:text-[#F4EBDD] transition-colors pt-4 border-t border-[#D8C2A4]/10"
+                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#2A1B12] group-hover:text-[#B98A55] transition-colors pt-4 border-t border-[#E4C8BA]/40"
                   >
                     <span>Discover Drink</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
