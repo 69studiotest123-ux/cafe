@@ -3,11 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Compass } from "lucide-react";
+import { ArrowUpRight, Compass, ChevronDown } from "lucide-react";
 
 export default function Hero() {
+  const scrollToContent = () => {
+    const el = document.getElementById("features");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col justify-center items-center overflow-x-hidden bg-[#17110D]">
+    <section className="relative min-h-[100svh] w-full flex flex-col justify-center items-center overflow-x-clip bg-[#17110D]">
       {/* Background Image with Cinematic Scale Reveal */}
       <motion.div
         initial={{ scale: 1.08, opacity: 0 }}
@@ -150,24 +157,29 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Down Indicator (visible on desktop) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 pointer-events-none"
+      {/* Soft gradient blend into cream background */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAF7F2]/40 to-transparent pointer-events-none z-[5]" />
+
+      {/* Interactive Scroll Down Indicator (visible on all devices) */}
+      <motion.button
+        onClick={scrollToContent}
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        aria-label="Scroll down to explore"
+        className="absolute bottom-2.5 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group text-[#FAF6F0]/80 hover:text-white transition-all focus:outline-none"
       >
-        <span className="text-[10px] uppercase tracking-[0.28em] text-[#D8C2A4]/45">
+        <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] font-medium drop-shadow-md group-hover:text-[#FAF6F0]">
           Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 7, 0] }}
+          animate={{ y: [0, 5, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-9 rounded-full border border-[#B98A55]/40 flex items-start justify-center p-1.5 shadow-[0_0_12px_rgba(185,138,85,0.2)]"
+          className="w-5 h-8 rounded-full border border-white/30 group-hover:border-[#B98A55] flex items-start justify-center p-1 bg-black/25 backdrop-blur-sm transition-colors shadow-md"
         >
           <div className="w-1 h-2 bg-[#B98A55] rounded-full" />
         </motion.div>
-      </motion.div>
+      </motion.button>
     </section>
   );
 }

@@ -28,7 +28,7 @@ export default function FeatureStrip() {
   ];
 
   return (
-    <section className="relative z-20 border-y border-[#E4C8BA]/60 bg-[#FAF6F0] bg-grain py-12 md:py-16 overflow-hidden">
+    <section id="features" className="relative z-20 border-y border-[#E4C8BA]/60 bg-[#FAF6F0] bg-grain py-12 md:py-16 overflow-hidden">
       {/* Ambient background glow */}
       <div className="ambient-orb w-[500px] h-[300px] bg-[#E4C8BA]/30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-orb" />
 

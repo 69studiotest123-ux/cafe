@@ -120,17 +120,17 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#17110D] text-[#F4EBDD] font-sans antialiased selection:bg-[#B98A55] selection:text-[#17110D]" suppressHydrationWarning>
+      <body className="min-h-screen bg-[#FAF7F2] text-[#2A1B12] font-sans antialiased selection:bg-[#E4C8BA] selection:text-[#2A1B12] overflow-x-clip" suppressHydrationWarning>
         <PageLoader />
         <Navbar />
-        <main>{children}</main>
+        <main className="w-full overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

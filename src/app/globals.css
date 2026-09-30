@@ -30,7 +30,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: #FAF7F2;
   color: #2A1B12;
   font-family: var(--font-sans);
@@ -38,11 +37,12 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #FAF7F2;
   color: #2A1B12;
   selection-background-color: #E4C8BA;
   selection-color: #2A1B12;
+  -webkit-overflow-scrolling: touch;
 }
 
 ::selection {
@@ -52,17 +52,18 @@ body {
 
 /* Custom editorial scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8C2A4;
-  border-radius: 4px;
+  background: #C2A782;
+  border-radius: 6px;
+  border: 2px solid #FAF7F2;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B98A55;
+  background: #9A6A38;
 }
 
 /* Luxury backlighting and glow utility */
