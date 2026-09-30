@@ -20,10 +20,10 @@ export default function Logo({
   // Horizontal logo variant for header matching user's requested layout
   if (variant === "header") {
     const headerHeightMap = {
-      sm: { h: 24, w: 59 },
-      md: { h: 30, w: 74 },
-      lg: { h: 36, w: 89 },
-      xl: { h: 46, w: 114 },
+      sm: { h: 28, w: 69 },
+      md: { h: 36, w: 89 },
+      lg: { h: 44, w: 109 },
+      xl: { h: 52, w: 129 },
     };
     const dimensions = headerHeightMap[size] || headerHeightMap.md;
 

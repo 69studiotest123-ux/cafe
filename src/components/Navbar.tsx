@@ -41,8 +41,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "py-1.5 bg-[#E4C8BA]/95 backdrop-blur-md border-b border-[#382418]/15 shadow-md"
-            : "py-2 bg-[#E4C8BA] border-b border-[#382418]/10 shadow-sm"
+            ? "py-2.5 sm:py-3 bg-[#E4C8BA]/95 backdrop-blur-md border-b border-[#382418]/15 shadow-md"
+            : "py-3.5 sm:py-4 bg-[#E4C8BA] border-b border-[#382418]/10 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2.5">
             <Link
               href="/#book-table"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.16em] font-medium shadow-sm hover:shadow-[0_4px_14px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.16em] font-medium shadow-sm hover:shadow-[0_4px_14px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
             >
               <span>Book a Table</span>
               <ArrowUpRight className="w-3 h-3" />
