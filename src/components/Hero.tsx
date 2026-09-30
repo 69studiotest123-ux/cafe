@@ -83,16 +83,16 @@ export default function Hero() {
           <span className="sr-only">Beru Café Colombo</span>
 
           {/* Ambient warm champagne backlight */}
-          <div className="absolute -inset-6 sm:-inset-8 bg-gradient-to-r from-[#E4C8BA]/25 via-[#FAF6F0]/30 to-[#E4C8BA]/25 blur-2xl rounded-full pointer-events-none" />
+          <div className="absolute -inset-8 sm:-inset-12 bg-gradient-to-r from-[#E4C8BA]/25 via-[#FAF6F0]/30 to-[#E4C8BA]/25 blur-3xl rounded-full pointer-events-none" />
 
-          <div className="relative w-32 sm:w-52 md:w-64 aspect-[1000/1017] transition-transform duration-500 hover:scale-[1.03]">
+          <div className="relative w-48 sm:w-72 md:w-84 lg:w-96 xl:w-[420px] aspect-[1000/1017] transition-transform duration-500 hover:scale-[1.03]">
             <Image
               src="/images/beru-logo-rich-espresso.png"
               alt="Beru Café Colombo"
               fill
               priority
-              sizes="(max-width: 640px) 130px, (max-width: 768px) 210px, 260px"
-              className="object-contain drop-shadow-[0_3px_12px_rgba(0,0,0,0.4)] drop-shadow-[0_0_20px_rgba(228,200,186,0.4)]"
+              sizes="(max-width: 640px) 200px, (max-width: 768px) 300px, (max-width: 1024px) 360px, 420px"
+              className="object-contain drop-shadow-[0_3px_12px_rgba(0,0,0,0.4)] drop-shadow-[0_0_25px_rgba(228,200,186,0.45)]"
             />
           </div>
         </motion.h1>
@@ -112,12 +112,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="w-full max-w-lg mx-auto px-4 py-2.5 sm:py-3.5 rounded-2xl bg-black/50 backdrop-blur-md border border-white/20 shadow-xl my-2.5 sm:my-4"
+          className="w-full max-w-xl sm:max-w-2xl mx-auto px-5 sm:px-8 py-3.5 sm:py-5 rounded-2xl sm:rounded-3xl bg-black/55 backdrop-blur-md border border-white/20 shadow-2xl my-2.5 sm:my-4"
         >
-          <p className="text-xs sm:text-base md:text-lg text-white font-serif italic font-light leading-relaxed drop-shadow-md">
+          <p className="text-[15px] sm:text-lg md:text-xl lg:text-2xl text-white font-serif italic font-light leading-relaxed drop-shadow-md">
             "A cozy space where great food, refreshing drinks and good vibes come together."
           </p>
-          <span className="block mt-1 sm:mt-1.5 text-[10px] sm:text-xs text-[#E4C8BA] font-sans font-medium tracking-wide drop-shadow-sm">
+          <span className="block mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base text-[#E4C8BA] font-sans font-medium tracking-wide drop-shadow-sm">
             29, Thimbirigasyaya Place, Colombo 05 • Open 7 Days
           </span>
         </motion.div>

@@ -10,7 +10,7 @@ export default function PageLoader() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 1400);
+    }, 950);
 
     return () => clearTimeout(timer);
   }, []);
@@ -21,7 +21,7 @@ export default function PageLoader() {
         <motion.div
           key="beru-loader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }}
+          exit={{ opacity: 0, pointerEvents: "none" as const, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#E4C8BA] select-none"
         >
           {/* Subtle warm ambient backlighting */}

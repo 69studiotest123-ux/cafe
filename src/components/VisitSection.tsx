@@ -34,10 +34,10 @@ export default function VisitSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           {/* Information Cards (Left) */}
           <motion.div
-            initial={{ opacity: 0, x: -25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="lg:col-span-5 flex flex-col justify-between space-y-6"
           >
             {/* Address Card */}
@@ -128,18 +128,18 @@ export default function VisitSection() {
 
           {/* Interactive Map & Direct Directions (Right) */}
           <motion.div
-            initial={{ opacity: 0, x: 25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="lg:col-span-7 flex flex-col"
           >
             <div className="relative flex-grow min-h-[380px] lg:min-h-[460px] rounded-3xl overflow-hidden border border-[#E4C8BA]/80 bg-white shadow-xl flex flex-col justify-between p-8 sm:p-10">
-              {/* Embed authentic Google Maps frame */}
+              {/* Embed authentic Google Maps frame with mobile scroll protection */}
               <iframe
                 title="Beru Cafe Location Map"
                 src="https://maps.google.com/maps?q=29+Thimbirigasyaya+Place,+Colombo+05,+Sri+Lanka&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                className="absolute inset-0 w-full h-full border-0 opacity-90 transition-opacity duration-500"
+                className="absolute inset-0 w-full h-full border-0 opacity-90 transition-opacity duration-500 pointer-events-none md:pointer-events-auto"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

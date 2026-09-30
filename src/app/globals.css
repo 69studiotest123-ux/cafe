@@ -34,6 +34,10 @@ html {
   color: #2A1B12;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -43,6 +47,7 @@ body {
   selection-background-color: #E4C8BA;
   selection-color: #2A1B12;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: none;
 }
 
 ::selection {
@@ -232,11 +237,33 @@ textarea:focus {
 }
 
 /* ============================================================
-   Ambient Orb Helper
+   Ambient Orb Helper - GPU Accelerated & Mobile Optimized
    ============================================================ */
 .ambient-orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   filter: blur(80px);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  contain: layout paint;
+}
+
+@media (max-width: 768px) {
+  .ambient-orb {
+    filter: blur(36px);
+    animation: none !important;
+    opacity: 0.65;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb,
+  .animate-float,
+  .animate-float-slow,
+  .text-shimmer {
+    animation: none !important;
+  }
 }
