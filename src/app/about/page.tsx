@@ -93,17 +93,14 @@ export default function AboutPage() {
             </p>
 
             <div className="p-6 rounded-2xl bg-white border border-[#E4C8BA] shadow-[0_8px_30px_rgba(56,36,24,0.06)] space-y-3 mt-6">
-              <div className="flex items-center gap-3 text-[#2A1B12] font-serif text-lg font-semibold">
-                <div className="w-7 h-7 rounded-full overflow-hidden bg-[#FAF6F0] p-0.5 border border-[#B98A55] shadow-sm flex items-center justify-center shrink-0">
-                  <Image
-                    src="/images/beru-shell-symbol.png"
-                    alt="Beru Café Shell Symbol"
-                    width={28}
-                    height={28}
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-                <span>Visit Us at Thimbirigasyaya</span>
+              <div className="flex items-center justify-between pb-1">
+                <Image
+                  src="/images/beru-header-logo.png"
+                  alt="Beru Café Colombo"
+                  width={110}
+                  height={44}
+                  className="object-contain h-8 w-auto"
+                />
               </div>
               <p className="text-xs text-[#6A5546]">
                 29, Thimbirigasyaya Place, Colombo 05 • Open every day from 8:00 AM to 5:30 PM.

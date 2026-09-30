@@ -15,15 +15,15 @@ export default function Logo({
   withGlow = false,
   size = "md",
   lightMode = false,
-  variant = "badge",
+  variant = "header",
 }: LogoProps) {
   // Horizontal logo variant for header matching user's requested layout
   if (variant === "header") {
     const headerHeightMap = {
       sm: { h: 28, w: 69 },
       md: { h: 36, w: 89 },
-      lg: { h: 44, w: 109 },
-      xl: { h: 52, w: 129 },
+      lg: { h: 48, w: 118 },
+      xl: { h: 64, w: 158 },
     };
     const dimensions = headerHeightMap[size] || headerHeightMap.md;
 

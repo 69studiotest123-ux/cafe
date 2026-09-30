@@ -146,19 +146,15 @@ export default function VisitSection() {
 
               {/* Top Map Card Overlay */}
               <div className="relative z-10 self-start p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E4C8BA] max-w-sm shadow-xl">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded-full overflow-hidden bg-[#FAF6F0] p-1 border border-[#B98A55] shadow-sm flex items-center justify-center shrink-0">
-                    <Image
-                      src="/images/beru-shell-symbol.png"
-                      alt="Beru Café"
-                      width={32}
-                      height={32}
-                      className="object-contain w-full h-full"
-                    />
-                  </div>
-                  <span className="font-serif text-lg text-[#2A1B12] font-semibold">
-                    Beru Café
-                  </span>
+                <div className="mb-2.5">
+                  <Image
+                    src="/images/beru-header-logo.png"
+                    alt="Beru Café Colombo"
+                    width={105}
+                    height={42}
+                    className="object-contain h-8 w-auto"
+                    priority
+                  />
                 </div>
                 <p className="text-xs text-[#6A5546] leading-relaxed font-normal">
                   29, Thimbirigasyaya Place, Colombo 05

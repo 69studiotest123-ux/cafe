@@ -3,16 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Compass, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Compass } from "lucide-react";
 
 export default function Hero() {
-  const scrollToContent = () => {
-    const el = document.getElementById("features");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-center items-center overflow-x-clip bg-[#17110D]">
       {/* Background Image with Cinematic Scale Reveal */}
@@ -48,13 +41,13 @@ export default function Hero() {
       />
 
       {/* Hero Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-6 sm:pb-10 text-center flex flex-col justify-center items-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-6 sm:pb-10 text-center flex flex-col justify-center items-center">
         {/* Top Tagline Badge - Warm, bright & glowing */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.7 }}
-          className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-1 sm:py-2 rounded-full border border-[#E4C8BA]/80 bg-[#FAF6F0]/95 backdrop-blur-md mb-1 sm:mb-2 shadow-md"
+          className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-1 sm:py-2 rounded-full border border-[#E4C8BA]/80 bg-[#FAF6F0]/95 backdrop-blur-md -mt-5 sm:-mt-8 mb-2 sm:mb-3 shadow-md"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#B98A55]" style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
           <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold text-[#382418]">
@@ -68,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
-          className="font-serif italic text-sm sm:text-xl md:text-2xl text-[#FAF6F0] font-light mb-0.5 sm:mb-1 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]"
+          className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#FAF6F0] font-normal mb-1 sm:mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] tracking-wide"
         >
           Welcome to
         </motion.p>
@@ -83,16 +76,16 @@ export default function Hero() {
           <span className="sr-only">Beru Café Colombo</span>
 
           {/* Ambient warm champagne backlight */}
-          <div className="absolute -inset-8 sm:-inset-12 bg-gradient-to-r from-[#E4C8BA]/25 via-[#FAF6F0]/30 to-[#E4C8BA]/25 blur-3xl rounded-full pointer-events-none" />
+          <div className="absolute -inset-6 sm:-inset-10 bg-gradient-to-r from-[#E4C8BA]/25 via-[#FAF6F0]/30 to-[#E4C8BA]/25 blur-3xl rounded-full pointer-events-none" />
 
-          <div className="relative w-48 sm:w-72 md:w-84 lg:w-96 xl:w-[420px] aspect-[1000/1017] transition-transform duration-500 hover:scale-[1.03]">
+          <div className="relative w-64 sm:w-80 md:w-96 lg:w-[460px] aspect-[1036/420] transition-transform duration-500 hover:scale-[1.03]">
             <Image
-              src="/images/beru-logo-rich-espresso.png"
+              src="/images/beru-header-logo.png"
               alt="Beru Café Colombo"
               fill
               priority
-              sizes="(max-width: 640px) 200px, (max-width: 768px) 300px, (max-width: 1024px) 360px, 420px"
-              className="object-contain drop-shadow-[0_3px_12px_rgba(0,0,0,0.4)] drop-shadow-[0_0_25px_rgba(228,200,186,0.45)]"
+              sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 460px"
+              className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] drop-shadow-[0_0_30px_rgba(228,200,186,0.35)]"
             />
           </div>
         </motion.h1>
@@ -159,27 +152,6 @@ export default function Hero() {
 
       {/* Soft gradient blend into cream background */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAF7F2]/40 to-transparent pointer-events-none z-[5]" />
-
-      {/* Interactive Scroll Down Indicator (visible on all devices) */}
-      <motion.button
-        onClick={scrollToContent}
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        aria-label="Scroll down to explore"
-        className="absolute bottom-2.5 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group text-[#FAF6F0]/80 hover:text-white transition-all focus:outline-none"
-      >
-        <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] font-medium drop-shadow-md group-hover:text-[#FAF6F0]">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-white/30 group-hover:border-[#B98A55] flex items-start justify-center p-1 bg-black/25 backdrop-blur-sm transition-colors shadow-md"
-        >
-          <div className="w-1 h-2 bg-[#B98A55] rounded-full" />
-        </motion.div>
-      </motion.button>
     </section>
   );
 }
