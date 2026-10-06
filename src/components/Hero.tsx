@@ -3,155 +3,120 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Compass } from "lucide-react";
+import { ArrowUpRight, Compass, Clock } from "lucide-react";
+import { BERU_INFO } from "@/data/cafeData";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col justify-center items-center overflow-x-clip bg-[#17110D]">
-      {/* Background Image with Cinematic Scale Reveal */}
-      <motion.div
-        initial={{ scale: 1.08, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 z-0"
-      >
+    <section className="relative min-h-[90svh] sm:min-h-[92svh] lg:min-h-[94vh] w-full flex flex-col justify-end lg:justify-center items-center overflow-hidden bg-[#17110D] pt-24 pb-12 sm:pb-16 px-4 sm:px-6">
+      {/* Background Image with Cinematic Tonal Treatment */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-ambience.jpg"
-          alt="Beru Café Colombo - Artisan food and signature matcha on warm wooden counter"
+          alt="Beru Café Colombo - Artisan coffee and signature brunch"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center scale-[1.02]"
         />
+        {/* Soft, rich photographic overlay - preserves warm natural light while guaranteeing crisp readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#17110D] via-[#17110D]/65 to-[#17110D]/35" />
+      </div>
 
-        {/* Balanced cinematic grading: maintains natural sunlight while providing crisp text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/35" />
-      </motion.div>
-
-      {/* Ambient Sunlit Orbs */}
-      <div
-        className="ambient-orb animate-orb w-[600px] h-[600px] bg-[#B98A55]/15 top-[-100px] left-[-150px] z-[1]"
-      />
-      <div
-        className="ambient-orb animate-orb-reverse w-[500px] h-[500px] bg-[#4E5E48]/15 bottom-[-80px] right-[-120px] z-[1]"
-      />
-      <div
-        className="ambient-orb w-[350px] h-[350px] bg-[#E4C8BA]/15 top-[30%] right-[10%] z-[1]"
-        style={{ animation: "orb-drift 20s ease-in-out infinite 5s" }}
-      />
-
-      {/* Hero Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-6 sm:pb-10 text-center flex flex-col justify-center items-center">
-        {/* Top Tagline Badge - Warm, bright & glowing */}
+      {/* Hero Editorial Composition */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+        {/* Top Eyebrow Tag */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.7 }}
-          className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-1 sm:py-2 rounded-full border border-[#E4C8BA]/80 bg-[#FAF6F0]/95 backdrop-blur-md -mt-5 sm:-mt-8 mb-2 sm:mb-3 shadow-md"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md mb-3 sm:mb-5 shadow-sm"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B98A55]" style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
-          <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold text-[#382418]">
-            GOOD FOOD • GREAT VIBES
+          <span className="w-1.5 h-1.5 rounded-full bg-[#B98A55]" />
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] font-medium text-[#FAF6F0]">
+            COLOMBO 05 • ARTISAN CAFÉ
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B98A55]" style={{ animation: "pulse-glow 2s ease-in-out infinite 1s" }} />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#B98A55]" />
         </motion.div>
 
-        {/* Welcome Intro */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.7 }}
-          className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#FAF6F0] font-normal mb-1 sm:mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] tracking-wide"
+        {/* Brand Emblem / Header Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-48 sm:w-64 md:w-80 aspect-[1036/420] mb-3 sm:mb-4"
         >
-          Welcome to
-        </motion.p>
+          <Image
+            src="/images/beru-header-logo.png"
+            alt="Beru Café Colombo"
+            fill
+            priority
+            sizes="(max-width: 640px) 200px, 320px"
+            className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]"
+          />
+        </motion.div>
 
-        {/* Official Gold Beru Emblem & Wordmark (Custom Typography & Shell) */}
+        {/* Large Headline (Authentic brand messaging & semantic H1) */}
         <motion.h1
-          initial={{ opacity: 0, scale: 0.92, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex items-center justify-center my-0.5 sm:my-1 select-none"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-2xl px-2 mb-3 sm:mb-4"
         >
-          <span className="sr-only">Beru Café Colombo</span>
-
-          {/* Ambient warm champagne backlight */}
-          <div className="absolute -inset-6 sm:-inset-10 bg-gradient-to-r from-[#E4C8BA]/25 via-[#FAF6F0]/30 to-[#E4C8BA]/25 blur-3xl rounded-full pointer-events-none" />
-
-          <div className="relative w-64 sm:w-80 md:w-96 lg:w-[460px] aspect-[1036/420] transition-transform duration-500 hover:scale-[1.03]">
-            <Image
-              src="/images/beru-header-logo.png"
-              alt="Beru Café Colombo"
-              fill
-              priority
-              sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 460px"
-              className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] drop-shadow-[0_0_30px_rgba(228,200,186,0.35)]"
-            />
-          </div>
+          <span className="sr-only">Beru Café Colombo — Artisan Café & Specialty Coffee Bar</span>
+          <span className="block font-serif italic text-2xl sm:text-4xl md:text-5xl text-[#FAF6F0] font-normal leading-[1.2] drop-shadow-md">
+            “A cozy space where great food, refreshing drinks & good vibes come together.”
+          </span>
         </motion.h1>
 
-        {/* Delicate Ornament Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0.5 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.65, duration: 0.8 }}
-          className="ornament-divider w-full max-w-[180px] sm:max-w-xs mx-auto my-1 sm:my-2"
-        >
-          <span className="text-[#FAF6F0] text-xs drop-shadow-md">✦</span>
-        </motion.div>
-
-        {/* Authentic Quote & Subtitle Card — Protected with frosted contrast backdrop for 100% visibility */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
+        {/* Supporting Editorial Text */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="w-full max-w-xl sm:max-w-2xl mx-auto px-5 sm:px-8 py-3.5 sm:py-5 rounded-2xl sm:rounded-3xl bg-black/55 backdrop-blur-md border border-white/20 shadow-2xl my-2.5 sm:my-4"
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-xs sm:text-sm md:text-base text-[#D8C2A4] font-light max-w-lg leading-relaxed mb-6 sm:mb-8"
         >
-          <p className="text-[15px] sm:text-lg md:text-xl lg:text-2xl text-white font-serif italic font-light leading-relaxed drop-shadow-md">
-            "A cozy space where great food, refreshing drinks and good vibes come together."
-          </p>
-          <span className="block mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base text-[#E4C8BA] font-sans font-medium tracking-wide drop-shadow-sm">
-            29, Thimbirigasyaya Place, Colombo 05 • Open 7 Days
-          </span>
-        </motion.div>
+          Ceremonial Japanese matcha, specialty coffee & artisan brunch dishes served daily at 29, Thimbirigasyaya Place.
+        </motion.p>
 
-        {/* Call to Actions — side by side on mobile for compact vertical layout */}
+        {/* Mobile-First Interactive CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 0.8 }}
-          className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto mt-1 sm:mt-2"
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
         >
           <Link
             href="/menu"
-            className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-[#B98A55] hover:bg-[#FAF6F0] text-[#17110D] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all duration-300 shadow-xl shadow-black/40 hover:shadow-[0_0_25px_rgba(244,235,221,0.4)] whitespace-nowrap"
+            className="touch-target group flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#B98A55] hover:bg-[#FAF6F0] text-[#17110D] text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98]"
           >
             <span>Explore Menu</span>
-            <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
 
           <Link
             href="/contact"
-            className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full border border-[#E4C8BA]/90 hover:border-[#B98A55] bg-[#FAF6F0]/95 hover:bg-[#FAF6F0] text-[#382418] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.2em] shadow-lg backdrop-blur-md transition-all duration-300 whitespace-nowrap"
+            className="touch-target group flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full border border-white/25 hover:border-white/60 bg-black/35 hover:bg-black/50 text-[#FAF6F0] text-xs font-medium uppercase tracking-[0.18em] backdrop-blur-sm transition-all duration-200 active:scale-[0.98]"
           >
-            <span>Visit Beru</span>
-            <Compass className="w-3 h-3 sm:w-4 sm:h-4 text-[#B98A55] transition-transform duration-500 group-hover:rotate-45" />
+            <Compass className="w-4 h-4 text-[#B98A55]" />
+            <span>Visit Us</span>
           </Link>
         </motion.div>
 
-        {/* Decorative Floating Script */}
+        {/* Operating status badge */}
         <motion.div
-          initial={{ opacity: 0, rotate: -6 }}
-          animate={{ opacity: 0.65, rotate: -6 }}
-          transition={{ delay: 1.2, duration: 1.2 }}
-          className="animate-float-slow hidden lg:block absolute right-10 bottom-24 text-[#D8C2A4]/60 font-serif italic text-2xl tracking-wide select-none pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-6 sm:mt-8 flex items-center gap-2 text-[11px] sm:text-xs text-[#D8C2A4]/80 tracking-wide font-sans"
         >
-          Eat Drink Be Happy ~
+          <Clock className="w-3.5 h-3.5 text-[#B98A55]" />
+          <span>{BERU_INFO.hours} • {BERU_INFO.openingDays}</span>
         </motion.div>
       </div>
 
-      {/* Soft gradient blend into cream background */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAF7F2]/40 to-transparent pointer-events-none z-[5]" />
+      {/* Subtle blend to page background */}
+      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#FAF7F2] to-transparent pointer-events-none" />
     </section>
   );
 }

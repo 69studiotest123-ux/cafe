@@ -3,131 +3,181 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowUpRight, Droplet, Coffee, Leaf } from "lucide-react";
+import { ArrowUpRight, Leaf, Droplet, Coffee } from "lucide-react";
 import LazyVideo from "./LazyVideo";
 
 export default function SpecialtyDrinks() {
-  const drinks = [
-    {
-      name: "Artisan Rose Matcha",
-      category: "Ceremonial Matcha",
-      desc: "Highest quality ceremonial grade Japanese Uji matcha paired with our delicate house-made rose syrup and silky chilled milk.",
-      tag: "Signature Reel",
-      video: "/videos/rose-matcha.mp4",
-      image: "/images/dish-smoothie-green-juice.jpg",
-      icon: Leaf,
-    },
+  const spotlightDrink = {
+    name: "Artisan Rose Matcha",
+    category: "Ceremonial Matcha",
+    tag: "Signature Reel",
+    desc: "Highest grade ceremonial Uji matcha stone-ground in Japan, paired with our house-simmered botanical rose syrup and velvety chilled milk.",
+    video: "/videos/rose-matcha.mp4",
+    poster: "/images/dish-smoothie-green-juice.jpg",
+    notes: ["Ceremonial Uji Grade", "House Rose Syrup", "Served Chilled"],
+  };
+
+  const secondaryDrinks = [
     {
       name: "Botanical Cucumber Cooler",
       category: "Cold-Pressed & Herbals",
-      desc: "Crisp cold-pressed local cucumber, garden-picked sweet mint, citrus spritz, and sparkling mineral water.",
-      tag: "Refreshingly Different",
+      tag: "Island Refreshment",
+      desc: "Crisp cold-pressed island cucumber, garden mint, fresh citrus spritz, and sparkling mineral water.",
       image: "/images/dish-smoothie-counter.jpg",
       icon: Droplet,
+      notes: ["Cold-Pressed", "Zero Refined Sugar", "Hydrating"],
     },
     {
       name: "Single-Origin Espresso Tonic",
       category: "Specialty Coffee",
-      desc: "Crisp Mediterranean tonic water crowned with a vibrant double shot of seasonal light roast espresso and charred citrus.",
       tag: "Barista Special",
+      desc: "Chilled Mediterranean botanical tonic water crowned with a double shot of seasonal light roast espresso and charred citrus.",
       image: "/images/hero-ambience.jpg",
       icon: Coffee,
+      notes: ["Single Origin", "Sparkling Tonic", "Citrus Twist"],
     },
   ];
 
   return (
-    <section className="relative py-28 md:py-40 bg-[#FAF7F2] overflow-hidden">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/4 -left-40 w-96 h-96 rounded-full bg-[#E4C8BA]/20 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 rounded-full bg-[#B98A55]/10 blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        {/* Editorial Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+    <section className="relative py-16 sm:py-24 lg:py-32 bg-[#FAF7F2] border-b border-[#2A1B12]/8 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
+        {/* Section Header */}
+        <div className="max-w-2xl mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#B98A55]" />
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#B98A55]">
-              SPECIALTY DRINKS
+            <span className="w-6 h-[1.5px] bg-[#B98A55]" />
+            <span className="text-[11px] uppercase tracking-[0.28em] font-semibold text-[#B98A55]">
+              SIGNATURE DRINKS
             </span>
-            <Sparkles className="w-3.5 h-3.5 text-[#B98A55]" />
           </div>
 
-          <h2 className="font-serif text-4xl sm:text-6xl text-[#2A1B12] font-normal tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#17110D] font-normal tracking-tight mb-4">
             “Beautifully crafted. <br />
             <span className="italic text-[#B98A55]">Refreshingly different.”</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#6A5546] font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#6A5546] font-light leading-relaxed">
             From ceremonial Japanese matcha to delicate cold-pressed elixirs and artisan pour-overs, every beverage at Beru is prepared with mindfulness and artistic precision.
           </p>
         </div>
 
-        {/* 3 Large Cinematic Beverage Showcases */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {drinks.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.15, duration: 0.8 }}
-                className="group relative rounded-3xl overflow-hidden bg-white border border-[#E4C8BA]/80 hover:border-[#B98A55] shadow-[0_8px_30px_rgba(56,36,24,0.06)] hover:shadow-xl transition-all duration-500 flex flex-col justify-between"
+        {/* Asymmetric Showcase: 1 Hero Spotlight + 2 Paired Beverages */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* Left Column: Spotlight Drink (Rose Matcha with Lazy Video) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 flex flex-col rounded-3xl overflow-hidden bg-white border border-[#2A1B12]/8 shadow-[0_8px_30px_rgba(42,27,18,0.04)]"
+          >
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-[#F4EBDD]">
+              <LazyVideo
+                src={spotlightDrink.video}
+                poster={spotlightDrink.poster}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+              <div className="absolute top-4 left-4">
+                <span className="px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#FAF6F0]/95 backdrop-blur-md text-[#17110D] border border-[#2A1B12]/10 shadow-sm flex items-center gap-1.5">
+                  <Leaf className="w-3 h-3 text-[#B98A55]" />
+                  {spotlightDrink.tag}
+                </span>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-[#B98A55] font-semibold block mb-1">
+                  {spotlightDrink.category}
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#17110D] font-normal mb-3">
+                  {spotlightDrink.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#6A5546] font-light leading-relaxed mb-6">
+                  {spotlightDrink.desc}
+                </p>
+
+                {/* Flavor Notes */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {spotlightDrink.notes.map((note) => (
+                    <span
+                      key={note}
+                      className="px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#2A1B12]/8 text-[11px] text-[#2A1B12] font-medium"
+                    >
+                      {note}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                href="/menu"
+                className="touch-target inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#17110D] hover:text-[#B98A55] transition-colors pt-4 border-t border-[#2A1B12]/8"
               >
-                {/* Image or Video */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FAF6F0]">
-                  {"video" in item && item.video ? (
-                    <LazyVideo
-                      src={item.video}
-                      poster={item.image}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                  ) : (
+                <span>Discover Matcha Menu</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right Column: 2 Paired Drinks Stack */}
+          <div className="lg:col-span-5 flex flex-col gap-6 justify-between">
+            {secondaryDrinks.map((drink, idx) => {
+              const Icon = drink.icon;
+              return (
+                <motion.div
+                  key={drink.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.1, duration: 0.6 }}
+                  className="group flex flex-col sm:flex-row lg:flex-col rounded-3xl overflow-hidden bg-white border border-[#2A1B12]/8 shadow-[0_8px_30px_rgba(42,27,18,0.04)] flex-1"
+                >
+                  <div className="relative aspect-[16/9] sm:aspect-square lg:aspect-[16/9] sm:w-48 lg:w-full overflow-hidden bg-[#FAF6F0] shrink-0">
                     <Image
-                      src={item.image}
-                      alt={item.name}
+                      src={drink.image}
+                      alt={drink.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                      sizes="(max-width: 1024px) 100vw, 400px"
+                      className="object-cover img-reveal"
                     />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Top Tag */}
-                  <div className="absolute top-5 left-5">
-                    <span className="px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-semibold bg-white/95 backdrop-blur-md text-[#2A1B12] border border-[#E4C8BA] shadow-sm flex items-center gap-1.5">
-                      <Icon className="w-3 h-3 text-[#B98A55]" />
-                      {item.tag}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-7 flex flex-col flex-grow justify-between bg-white">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#B98A55] font-semibold block mb-1.5">
-                      {item.category}
-                    </span>
-                    <h3 className="font-serif text-2xl text-[#2A1B12] font-medium group-hover:text-[#B98A55] transition-colors mb-3">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#6A5546] font-normal leading-relaxed mb-6">
-                      {item.desc}
-                    </p>
+                    <div className="absolute top-3.5 left-3.5">
+                      <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] font-semibold bg-[#FAF6F0]/95 backdrop-blur-md text-[#17110D] border border-[#2A1B12]/10 shadow-sm flex items-center gap-1.5">
+                        <Icon className="w-3 h-3 text-[#B98A55]" />
+                        {drink.tag}
+                      </span>
+                    </div>
                   </div>
 
-                  <Link
-                    href="/menu#matcha"
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#2A1B12] group-hover:text-[#B98A55] transition-colors pt-4 border-t border-[#E4C8BA]/40"
-                  >
-                    <span>Discover Drink</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </motion.div>
-            );
-          })}
+                  <div className="p-5 sm:p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.25em] text-[#B98A55] font-semibold block mb-1">
+                        {drink.category}
+                      </span>
+                      <h3 className="font-serif text-xl sm:text-2xl text-[#17110D] font-normal mb-2 group-hover:text-[#B98A55] transition-colors">
+                        {drink.name}
+                      </h3>
+                      <p className="text-xs text-[#6A5546] font-light leading-relaxed mb-4">
+                        {drink.desc}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5">
+                      {drink.notes.map((note) => (
+                        <span
+                          key={note}
+                          className="px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#2A1B12]/8 text-[10px] text-[#2A1B12]"
+                        >
+                          {note}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

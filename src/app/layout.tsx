@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
+import MobileActionBar from "@/components/MobileActionBar";
 import { BERU_INFO } from "@/data/cafeData";
 
 const cormorant = Cormorant_Garamond({
@@ -28,26 +29,32 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Beru Café | Artisan Café in Sri Lanka",
+  metadataBase: new URL("https://berucafe.lk"),
+  title: {
+    default: "Beru Café | Colombo 05 | Artisan Café & Matcha Bar",
+    template: "%s | Beru Café Colombo",
+  },
   description:
-    "Discover Beru Café — an artisan café offering thoughtfully crafted food, specialty drinks and a warm café experience in Sri Lanka.",
+    "Beru Café is an artisan café in Thimbirigasyaya, Colombo 05. Experience ceremonial Japanese matcha, specialty coffee, and handcrafted brunch in an unhurried oasis.",
   keywords: [
     "Beru Cafe",
     "Beru Cafe Colombo",
-    "Artisan Cafe Colombo",
-    "Specialty Coffee Sri Lanka",
-    "Matcha Colombo",
+    "Cafe Colombo 05",
     "Thimbirigasyaya Cafe",
-    "Best cafes in Colombo",
-    "Colombo cafe culture",
+    "Matcha Colombo",
+    "Specialty Coffee Colombo",
+    "Best Cafes in Colombo",
+    "Colombo Brunch",
   ],
   authors: [{ name: "Beru Café" }],
   creator: "Beru Café",
-  metadataBase: new URL("https://berucafe.lk"),
+  alternates: {
+    canonical: "https://berucafe.lk",
+  },
   openGraph: {
-    title: "Beru Café | Artisan Café in Sri Lanka",
+    title: "Beru Café | Colombo 05 | Artisan Café & Matcha Bar",
     description:
-      "A cozy space where great food, refreshing drinks and good vibes come together. Located at 29, Thimbirigasyaya Place, Colombo 05.",
+      "A cozy space where great food, refreshing drinks and good vibes come together at 29, Thimbirigasyaya Place, Colombo 05.",
     url: "https://berucafe.lk",
     siteName: "Beru Café",
     images: [
@@ -63,14 +70,25 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beru Café | Artisan Café in Sri Lanka",
+    title: "Beru Café | Colombo 05 | Artisan Café & Matcha Bar",
     description:
-      "Discover Beru Café — an artisan café offering thoughtfully crafted food, specialty drinks and a warm café experience in Sri Lanka.",
+      "Artisan café in Thimbirigasyaya, Colombo 05 featuring ceremonial Japanese matcha, specialty coffee, and handcrafted dishes.",
     images: ["/images/exterior-facade.jpg"],
   },
   icons: {
     icon: "/images/beru-shell-badge.png",
     apple: "/images/beru-shell-badge.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -79,13 +97,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Schema.org LocalBusiness / Cafe data
+  // Schema.org LocalBusiness / CafeOrCoffeeShop structured data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
+    "@id": "https://berucafe.lk/#cafe",
     name: BERU_INFO.name,
     image: "https://berucafe.lk/images/exterior-facade.jpg",
     description: BERU_INFO.quote,
+    url: "https://berucafe.lk",
+    telephone: BERU_INFO.phoneTel,
+    menu: "https://berucafe.lk/menu",
+    hasMap: BERU_INFO.mapsUrl,
+    acceptsReservations: "True",
+    priceRange: "$$",
+    servesCuisine: [
+      "Artisan Cafe",
+      "Specialty Coffee",
+      "Ceremonial Japanese Matcha",
+      "All-Day Modern Brunch",
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: "29, Thimbirigasyaya Place",
@@ -99,10 +130,6 @@ export default function RootLayout({
       latitude: 6.8925,
       longitude: 79.8654,
     },
-    url: "https://berucafe.lk",
-    telephone: "+94771234567",
-    servesCuisine: ["Artisan Cafe", "Specialty Coffee", "Japanese Matcha", "Modern Brunch"],
-    priceRange: "$$",
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -120,8 +147,8 @@ export default function RootLayout({
       },
     ],
     sameAs: [
-      "https://www.instagram.com/berucafe.lk/",
-      "https://maps.app.goo.gl/ZGNUv53XZPMz3Q2U7?g_st=ic",
+      BERU_INFO.instagramUrl,
+      BERU_INFO.mapsUrl,
     ],
   };
 
@@ -138,6 +165,7 @@ export default function RootLayout({
         <Navbar />
         <main className="w-full overflow-x-clip">{children}</main>
         <Footer />
+        <MobileActionBar />
       </body>
     </html>
   );

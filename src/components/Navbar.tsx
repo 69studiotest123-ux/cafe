@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Clock, MapPin } from "lucide-react";
+import { Menu, X, ArrowUpRight, Compass, Clock, MapPin } from "lucide-react";
 import { InstagramIcon } from "./Icons";
 import Logo from "./Logo";
 import { BERU_INFO } from "@/data/cafeData";
@@ -16,24 +16,35 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on page change
+  // Close mobile menu on page change & lock body scroll when open
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Menu", href: "/menu" },
-    { name: "Our Story", href: "/about" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Visit Us", href: "/contact" },
+    { num: "01", name: "Home", href: "/" },
+    { num: "02", name: "Menu", href: "/menu" },
+    { num: "03", name: "Our Story", href: "/about" },
+    { num: "04", name: "Gallery", href: "/gallery" },
+    { num: "05", name: "Visit & Contact", href: "/contact" },
   ];
 
   return (
@@ -41,31 +52,35 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "py-2.5 sm:py-3 bg-[#E4C8BA]/95 backdrop-blur-md border-b border-[#382418]/15 shadow-md"
-            : "py-3.5 sm:py-4 bg-[#E4C8BA] border-b border-[#382418]/10 shadow-sm"
+            ? "bg-[#FAF7F2]/92 backdrop-blur-md border-b border-[#2A1B12]/8 py-3 shadow-[0_4px_20px_rgba(42,27,18,0.03)]"
+            : "bg-[#FAF7F2]/75 backdrop-blur-sm border-b border-[#2A1B12]/5 py-3.5 sm:py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
-          {/* Brand Logo with user's horizontal layout */}
-          <Logo variant="header" size="md" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between">
+          {/* Brand Wordmark / Emblem */}
+          <div className="flex items-center">
+            <Logo variant="header" size="md" />
+          </div>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-300 py-1 ${
-                    isActive ? "text-[#17110D] font-semibold" : "text-[#382418]/80 hover:text-[#17110D]"
+                  className={`text-xs uppercase tracking-[0.22em] transition-colors duration-200 py-1 relative ${
+                    isActive
+                      ? "text-[#17110D] font-semibold"
+                      : "text-[#6A5546] hover:text-[#17110D] font-medium"
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#382418] rounded-full"
+                    <motion.span
+                      layoutId="navUnderline"
+                      className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#B98A55]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -74,114 +89,133 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Actions */}
-          <div className="flex items-center gap-2.5">
+          {/* Right Action / Mobile Toggle */}
+          <div className="flex items-center gap-2.5 sm:gap-4">
             <Link
-              href="/#book-table"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.16em] font-medium shadow-sm hover:shadow-[0_4px_14px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
+              href="/menu"
+              className="hidden lg:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#2A1B12] hover:bg-[#17110D] text-[#FAF6F0] text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-200 shadow-sm hover:scale-[1.02]"
             >
-              <span>Book a Table</span>
-              <ArrowUpRight className="w-3 h-3" />
+              <span>Explore Menu</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#B98A55]" />
             </Link>
 
-            {/* Hamburger for mobile & quick menu */}
+            {/* Premium Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              suppressHydrationWarning
-              className="p-1.5 sm:p-2 rounded-full border border-[#382418]/25 hover:border-[#382418] text-[#382418] hover:text-[#17110D] bg-white/40 hover:bg-white/70 transition-colors focus:outline-none"
+              aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+              className="touch-target inline-flex md:hidden items-center justify-center p-2 rounded-full border border-[#2A1B12]/15 bg-white/70 text-[#2A1B12] hover:bg-white transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 stroke-[1.75]" />
+              ) : (
+                <Menu className="w-5 h-5 stroke-[1.75]" />
+              )}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full-Screen Luxury Mobile & Overlay Navigation */}
+      {/* Full-Screen Editorial Mobile Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
-            animate={{ opacity: 1, clipPath: "circle(150% at 95% 5%)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 bg-[#E4C8BA] flex flex-col justify-between p-6 sm:p-12 overflow-y-auto"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-50 bg-[#FAF7F2] flex flex-col justify-between overflow-y-auto px-5 sm:px-8 py-5 pb-safe"
           >
-            {/* Header bar */}
-            <div className="flex items-center justify-between">
+            {/* Top Bar inside Menu */}
+            <div className="flex items-center justify-between border-b border-[#2A1B12]/10 pb-4">
               <Logo variant="header" size="md" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close navigation menu"
-                suppressHydrationWarning
-                className="p-2 sm:p-2.5 rounded-full border border-[#382418]/25 hover:border-[#382418] text-[#382418] hover:text-[#17110D] bg-white/40 hover:bg-white/70 transition-colors"
+                aria-label="Close menu"
+                className="touch-target p-2.5 rounded-full border border-[#2A1B12]/15 bg-white text-[#2A1B12] hover:bg-[#FAF6F0] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Menu Links */}
-            <div className="relative my-auto py-10 max-w-lg mx-auto w-full text-center">
-              <div className="space-y-6 relative z-10">
+            {/* Links Stack */}
+            <div className="my-auto py-8">
+              <div className="space-y-4 sm:space-y-6">
                 {navLinks.map((link, idx) => {
                   const isActive = pathname === link.href;
                   return (
                     <motion.div
                       key={link.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.07 }}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.08 + idx * 0.05, duration: 0.4 }}
                     >
                       <Link
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`font-serif text-3xl sm:text-4xl italic transition-colors block ${
-                          isActive ? "text-[#17110D] font-bold" : "text-[#382418]/80 hover:text-[#17110D]"
-                        }`}
+                        className="group flex items-baseline justify-between py-2 border-b border-[#2A1B12]/6 transition-colors"
                       >
-                        {link.name}
+                        <span className="flex items-baseline gap-3">
+                          <span className="text-[11px] font-mono tracking-widest text-[#B98A55]">
+                            {link.num}
+                          </span>
+                          <span
+                            className={`font-serif text-3xl sm:text-4xl tracking-tight transition-colors ${
+                              isActive
+                                ? "text-[#17110D] font-medium"
+                                : "text-[#6A5546] group-hover:text-[#17110D]"
+                            }`}
+                          >
+                            {link.name}
+                          </span>
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 text-[#B98A55] opacity-0 group-hover:opacity-100 transition-opacity" />
                       </Link>
                     </motion.div>
                   );
                 })}
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-10 pt-8 border-t border-[#382418]/15"
-              >
+              {/* Action Buttons */}
+              <div className="mt-8 space-y-3">
                 <Link
-                  href="/#book-table"
+                  href="/menu"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#382418] hover:bg-[#17110D] text-[#F4EBDD] font-medium tracking-[0.18em] text-xs uppercase transition-all shadow-[0_4px_20px_rgba(56,36,24,0.3)] hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 w-full h-12 rounded-full bg-[#2A1B12] text-[#FAF6F0] text-xs uppercase tracking-[0.2em] font-medium shadow-sm transition-all active:scale-[0.98]"
                 >
-                  <span>Request a Table</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span>Explore Menu</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#B98A55]" />
                 </Link>
-              </motion.div>
+
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full h-12 rounded-full border border-[#2A1B12]/20 bg-white/70 text-[#2A1B12] text-xs uppercase tracking-[0.2em] font-medium transition-all active:scale-[0.98]"
+                >
+                  <Compass className="w-4 h-4 text-[#B98A55]" />
+                  <span>Visit & Directions</span>
+                </Link>
+              </div>
             </div>
 
-            {/* Footer details in mobile menu */}
-            <div className="pt-6 border-t border-[#382418]/15 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#382418]/85 max-w-3xl mx-auto w-full text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <MapPin className="w-4 h-4 text-[#382418]" />
-                <span>{BERU_INFO.address}</span>
+            {/* Bottom Info Bar */}
+            <div className="pt-5 border-t border-[#2A1B12]/10 space-y-2 text-xs text-[#6A5546]">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#B98A55] shrink-0" />
+                <span className="truncate">{BERU_INFO.address}</span>
               </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Clock className="w-4 h-4 text-[#382418]" />
-                <span>{BERU_INFO.hours} • Open 7 Days</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-end gap-2">
-                <InstagramIcon className="w-4 h-4 text-[#382418]" />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-[#B98A55] shrink-0" />
+                  <span>{BERU_INFO.hours} • Open 7 Days</span>
+                </div>
                 <a
                   href={BERU_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#17110D] underline underline-offset-4"
+                  className="inline-flex items-center gap-1 text-[#2A1B12] font-medium hover:text-[#B98A55]"
                 >
-                  {BERU_INFO.instagram}
+                  <InstagramIcon className="w-3.5 h-3.5" />
+                  <span>{BERU_INFO.instagram}</span>
                 </a>
               </div>
             </div>
