@@ -153,7 +153,6 @@ export default function VisitSection() {
                     width={105}
                     height={42}
                     className="object-contain h-8 w-auto"
-                    priority
                   />
                 </div>
                 <p className="text-xs text-[#6A5546] leading-relaxed font-normal">

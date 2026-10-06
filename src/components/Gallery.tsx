@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "./Icons";
 import { BERU_INFO } from "@/data/cafeData";
+import LazyVideo from "./LazyVideo";
 
 export default function Gallery() {
   const galleryItems = [
@@ -96,12 +97,9 @@ export default function Gallery() {
             >
               <div className={`relative w-full ${item.aspect} overflow-hidden`}>
                 {"video" in item && item.video ? (
-                  <video
+                  <LazyVideo
                     src={item.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                    poster={item.src}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
                 ) : (

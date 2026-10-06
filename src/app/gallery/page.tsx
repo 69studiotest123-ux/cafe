@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Eye, X } from "lucide-react";
 import { InstagramIcon } from "@/components/Icons";
 import { BERU_INFO } from "@/data/cafeData";
+import LazyVideo from "@/components/LazyVideo";
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; desc: string } | null>(null);
@@ -130,12 +131,9 @@ export default function GalleryPage() {
             >
               <div className={`relative w-full ${item.aspect} overflow-hidden`}>
                 {"video" in item && item.video ? (
-                  <video
+                  <LazyVideo
                     src={item.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                    poster={item.src}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                 ) : (

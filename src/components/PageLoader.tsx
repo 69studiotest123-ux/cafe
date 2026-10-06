@@ -5,13 +5,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function PageLoader() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Elegant duration: gives a serene, warm welcome before dissolving
+    // Check if user already saw the loader in this session
+    if (typeof window !== "undefined" && sessionStorage.getItem("beru_loaded")) {
+      return;
+    }
+
+    setIsVisible(true);
+    try {
+      sessionStorage.setItem("beru_loaded", "true");
+    } catch {
+      // Ignore storage errors in private browsing
+    }
+
+    // Snappy, subtle welcome duration instead of blocking for seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 1600);
+    }, 450);
 
     return () => clearTimeout(timer);
   }, []);
@@ -24,9 +36,9 @@ export default function PageLoader() {
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.02,
+            scale: 1.01,
             pointerEvents: "none" as const,
-            transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+            transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
           }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center select-none overflow-hidden"
           style={{

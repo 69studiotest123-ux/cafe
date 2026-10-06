@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowUpRight, Droplet, Coffee, Leaf } from "lucide-react";
+import LazyVideo from "./LazyVideo";
 
 export default function SpecialtyDrinks() {
   const drinks = [
@@ -77,12 +78,9 @@ export default function SpecialtyDrinks() {
                 {/* Image or Video */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#FAF6F0]">
                   {"video" in item && item.video ? (
-                    <video
+                    <LazyVideo
                       src={item.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
+                      poster={item.image}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   ) : (
