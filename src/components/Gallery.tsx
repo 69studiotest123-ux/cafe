@@ -16,8 +16,8 @@ export default function Gallery() {
       poster: "/images/exterior-facade.jpg",
       title: "The Courtyard & Space",
       caption: "Walkthrough of our sunlit café at 29, Thimbirigasyaya Place",
-      colSpan: "col-span-1 md:col-span-2 lg:col-span-7",
-      aspect: "aspect-[16/10] sm:aspect-[16/10]",
+      colSpan: "col-span-1 md:col-span-2 lg:col-span-5",
+      aspect: "aspect-[9/16]",
     },
     {
       id: "gal-fish",
@@ -25,7 +25,7 @@ export default function Gallery() {
       src: "/images/dish-pan-seared-fish.jpg",
       title: "Pan-Seared Ocean Fish",
       caption: "Spiced carrot puree & wild mushroom ragout",
-      colSpan: "col-span-1 md:col-span-2 lg:col-span-5",
+      colSpan: "col-span-1 md:col-span-2 lg:col-span-7",
       aspect: "aspect-[4/3] sm:aspect-[4/3]",
     },
     {

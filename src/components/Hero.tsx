@@ -115,8 +115,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Subtle blend to page background */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#FAF7F2] to-transparent pointer-events-none" />
     </section>
   );
 }

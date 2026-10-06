@@ -18,7 +18,7 @@ export default function GalleryClient() {
       title: "The Courtyard & Space",
       desc: "Authentic opening walkthrough of Beru Café at 29, Thimbirigasyaya Place.",
       category: "Reel",
-      aspect: "aspect-[3/4]",
+      aspect: "aspect-[9/16]",
     },
     {
       src: "/images/dish-smoothie-green-juice.jpg",
@@ -26,7 +26,7 @@ export default function GalleryClient() {
       title: "Ceremonial Rose Matcha",
       desc: "Highest quality ceremonial Uji matcha whisked with our house-made rose syrup.",
       category: "Reel",
-      aspect: "aspect-[3/4]",
+      aspect: "aspect-[9/16]",
     },
     {
       src: "/images/dish-pan-seared-fish.jpg",

@@ -70,7 +70,7 @@ export default function SpecialtyDrinks() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 flex flex-col rounded-3xl overflow-hidden bg-white border border-[#2A1B12]/8 shadow-[0_8px_30px_rgba(42,27,18,0.04)]"
           >
-            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-[#F4EBDD]">
+            <div className="relative aspect-[9/16] w-full overflow-hidden bg-[#F4EBDD]">
               <LazyVideo
                 src={spotlightDrink.video}
                 poster={spotlightDrink.poster}
